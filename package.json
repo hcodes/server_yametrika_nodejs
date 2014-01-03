@@ -1,0 +1,23 @@
+{
+    "author": {
+        "name": "Denis Seleznev",
+        "email": "hcodes@yandex.ru",
+        "url": "https://github.com/hcodes"
+    },
+    "name": "yametrika",
+    "description": "",
+    "version": "0.1.0",
+    "homepage": "https://github.com/hcodes/server_yametrika_nodejs",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:hcodes/server_yametrika_nodejs.git"
+    },
+    "keywords": [
+        "yandex", "metrika", "analytics"
+    ],    
+    "devDependencies": {},
+    "optionalDependencies": {},
+    "engines": {
+        "node": "*"
+    }
+}
