@@ -12,14 +12,9 @@ http.createServer(function (req, res) {
     counter.req(req);
     
     counter.hit('http://example.com', 'Main page', 'http://google.com');
+    counter.hit('http://example.com/back/', 'Back', 'http://example.com/back/');
     counter.reachGoal('action');
     counter.extLink('http://nodejs.org');
     counter.file('http://example.com/file.zip');
-    counter.params({
-        level1: {
-            level2: {
-                level3: 1
-            }
-        }
-    });
-}).listen(80);
+    counter.params('level1', 'level2', 'level3', 1);
+}).listen(8080);

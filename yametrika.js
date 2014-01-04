@@ -137,11 +137,29 @@
          * 
          * @example
          * counter.params({level1: {level2: {level3: 1}}});
+         * или
+         * counter.params('level1', 'level2', 'level3', 1);
          */         
 		params: function (data) {
-			if (data) {
-				this._hitExt('', '', '', data, {pa: true});
-			}
+            var obj = {};
+            var pointer = obj;
+            var len = arguments.length;
+            if (len > 1) {
+                for (var i = 0; i < len - 1; i++) {
+                    pointer[arguments[i]] = {};
+                    if (i == len - 2) {
+                         pointer[arguments[i]] = arguments[i + 1];
+                    } else {
+                        pointer = pointer[arguments[i]];
+                    }
+                }
+                
+                this._hitExt('', '', '', obj, {pa: true});
+            } else {
+                if (data) {
+                    this._hitExt('', '', '', data, {pa: true});
+                }
+            }
             
             return this;
 		},
@@ -195,11 +213,11 @@
 			}
 			
 			if (pageUrl) {
-				postData['page-url'] = encodeURI(pageUrl);
+				postData['page-url'] = pageUrl;
 			}
 			
 			if (pageRef) {
-				postData['page-ref'] = encodeURI(pageRef);
+				postData['page-ref'] = pageRef;
 			}         
 			
 			if (modes) {
@@ -223,13 +241,13 @@
 			browserInfo.push('rn:' + (Math.floor(Math.random() * 1E6)));
 
 			if (pageTitle) {
-				browserInfo.push('t:' + encodeURI(pageTitle));
+				browserInfo.push('t:' + pageTitle);
 			}
 			
 			postData['browser-info'] = browserInfo.join(':');
 			
 			if (userParams) {
-				postData['site-info'] = encodeURI(JSON.stringify(userParams));
+				postData['site-info'] = JSON.stringify(userParams);
 			}
 
 			if (modes['ut']) {
