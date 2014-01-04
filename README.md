@@ -143,5 +143,8 @@ counter.params('level1', 'level2', 'level3', 1);
 counter.notBounce();
   ```
   
+## Полезные ссылки
+[Помощь Яндекс.Метрики](http://help.yandex.ru/metrika/)
+
 ## Лицензия
 MIT License
