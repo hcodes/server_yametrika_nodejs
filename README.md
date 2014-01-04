@@ -142,3 +142,6 @@ counter.params('level1', 'level2', 'level3', 1);
  
 counter.notBounce();
   ```
+  
+## Лицензия
+MIT License
