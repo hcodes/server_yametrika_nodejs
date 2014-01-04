@@ -67,12 +67,13 @@ http.createServer(function (req, res) {
  * @param {string} [ut] - для запрета индексирования 'noindex'
  * @return {Object} this
  * 
- * @example
- * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
- *
- * // С запретом на индексирования и параметрами визитов
- * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: {level2: 1}}, 'noindex');
+ * hit: function (pageUrl, pageTitle, pageRef, userParams, ut) {}
  */          
+ 
+counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
+
+// С запретом на индексирование и параметрами визитов
+counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: {level2: 1}}, 'noindex');
   ```
   
 ## Достижение цели
@@ -81,12 +82,13 @@ http.createServer(function (req, res) {
  * @param {string} target - название цели
  * @param {Object} [userParams] - параметры визитов
  * 
- * @example
- * counter.reachGoal('goalName');
- *
- * // С параметрами визитов
- * counter.reachGoal('goalName', {level1: {level2: 1}});
+ * reachGoal: function (target, userParams) {}
 */   
+
+counter.reachGoal('goalName');
+
+// С параметрами визитов
+counter.reachGoal('goalName', {level1: {level2: 1}});
   ```
 
 ## Внешняя ссылка
@@ -96,9 +98,11 @@ http.createServer(function (req, res) {
  * @param {string} [title] - заголовок страницы
  * @return {Object} this
  * 
+ * extLink: function (url, title) {}
  * @example
- * counter.extLink('http://nodejs.org');
  */         
+ 
+counter.extLink('http://nodejs.org');  
   ```
 
 ## Загрузка файла  
@@ -108,9 +112,10 @@ http.createServer(function (req, res) {
  * @param {string} [title] - заголовок страницы
  * @return {Object} this
  * 
- * @example
- * counter.file('http://mysite.org/secret.zip');
+ * file: function (file, title) {}
  */        
+ 
+counter.file('http://mysite.org/secret.zip');
   ```
   
 ## Параметры визитов
@@ -119,11 +124,13 @@ http.createServer(function (req, res) {
  * @param {...*} параметры визитов
  * @return {Object} this         
  * 
- * @example
- * counter.params({level1: {level2: {level3: 1}}});
- * или
- * counter.params('level1', 'level2', 'level3', 1);
+ * params: function (...) {}
  */         
+ 
+counter.params({level1: {level2: {level3: 1}}});
+
+// или
+counter.params('level1', 'level2', 'level3', 1);
   ```
   
 ## Не отказ
@@ -131,7 +138,7 @@ http.createServer(function (req, res) {
 /**
  * @return {Object} this
  * 
- * @example
- * counter.notBounce();
- */         
+ */
+ 
+counter.notBounce();
   ```

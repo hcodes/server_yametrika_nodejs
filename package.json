@@ -5,15 +5,15 @@
         "url": "https://github.com/hcodes"
     },
     "name": "yametrika",
-    "description": "",
-    "version": "0.9.0",
+    "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
+    "version": "0.9.1",
     "homepage": "https://github.com/hcodes/server_yametrika_nodejs",
     "repository": {
         "type": "git",
         "url": "git@github.com:hcodes/server_yametrika_nodejs.git"
     },
     "keywords": [
-        "yandex", "metrika", "analytics"
+        "yandex", "metrika", "analytics", "stats", "metrics", "track"
     ],    
     "devDependencies": {},
     "optionalDependencies": {},
