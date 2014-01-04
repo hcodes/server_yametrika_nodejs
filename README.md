@@ -59,32 +59,79 @@ http.createServer(function (req, res) {
   
 ## Отправка хита
   ```JavaScript
-        /**
-         * @param {string} pageUrl - адрес страницы
-         * @param {string} [pageTitle] - заголовок страницы
-         * @param {string} [pageRef] - реферер страницы
-         * @param {Object} [userParams] - параметры визитов
-         * @param {string} [ut] - для запрета индексирования 'noindex'
-         * @return {Object} this
-         * 
-         * @example
-         * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
-         *
-         * // С запретом на индексирования и параметрами визитов
-         * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: {level2: 1}}, 'noindex');
-         */          
+/**
+ * @param {string} pageUrl - адрес страницы
+ * @param {string} [pageTitle] - заголовок страницы
+ * @param {string} [pageRef] - реферер страницы
+ * @param {Object} [userParams] - параметры визитов
+ * @param {string} [ut] - для запрета индексирования 'noindex'
+ * @return {Object} this
+ * 
+ * @example
+ * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
+ *
+ * // С запретом на индексирования и параметрами визитов
+ * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: {level2: 1}}, 'noindex');
+ */          
   ```
   
 ## Достижение цели
   ```JavaScript
-        /**
-         * @param {string} target - название цели
-         * @param {Object} [userParams] - параметры визитов
-         * 
-         * @example
-         * counter.reachGoal('goalName');
-         *
-         * // С параметрами визитов
-         * counter.reachGoal('goalName', {level1: {level2: 1}});
-        */   
+/**
+ * @param {string} target - название цели
+ * @param {Object} [userParams] - параметры визитов
+ * 
+ * @example
+ * counter.reachGoal('goalName');
+ *
+ * // С параметрами визитов
+ * counter.reachGoal('goalName', {level1: {level2: 1}});
+*/   
+  ```
+
+## Внешняя ссылка
+  ```JavaScript
+/**
+ * @param {string} url - адрес страницы
+ * @param {string} [title] - заголовок страницы
+ * @return {Object} this
+ * 
+ * @example
+ * counter.extLink('http://nodejs.org');
+ */         
+  ```
+
+## Загрузка файла  
+  ```JavaScript
+/**
+ * @param {string} file - ссылка на файл
+ * @param {string} [title] - заголовок страницы
+ * @return {Object} this
+ * 
+ * @example
+ * counter.file('http://mysite.org/secret.zip');
+ */        
+  ```
+  
+## Параметры визитов
+  ```JavaScript
+/**
+ * @param {...*} параметры визитов
+ * @return {Object} this         
+ * 
+ * @example
+ * counter.params({level1: {level2: {level3: 1}}});
+ * или
+ * counter.params('level1', 'level2', 'level3', 1);
+ */         
+  ```
+  
+## Не отказ
+  ```JavaScript
+/**
+ * @return {Object} this
+ * 
+ * @example
+ * counter.notBounce();
+ */         
   ```
