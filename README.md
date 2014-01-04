@@ -33,3 +33,25 @@
 + Карта кликов
 
 Уникальные посетители считаются по User Agent и IP-адресу.
+
+## Установка
+`npm install yametrika`
+
+## Использование
+  ```JavaScript
+var http = require('http');
+
+// Создаем счётчик, 12345 - номер счётчика
+var counter = require('yametrika').counter({id: 12345});
+
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('okay');
+  
+    // Заполняем нужные данные из запроса к серверу для отправки данных в Метрику
+    counter.req(req);
+    
+    // Страница http://example.com, с заголовком 'Main page', переход был с 'http://google.com' (реферер)
+    counter.hit('http://example.com', 'Main page', 'http://google.com');
+}).listen(8080);  
+  ```
