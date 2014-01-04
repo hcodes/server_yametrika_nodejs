@@ -51,7 +51,40 @@ http.createServer(function (req, res) {
     // Заполняем нужные данные из запроса к серверу для отправки данных в Метрику
     counter.req(req);
     
-    // Страница http://example.com, с заголовком 'Main page', переход был с 'http://google.com' (реферер)
+    // Страница http://example.com, с заголовком 'Main page'
+    // переход был с http://google.com (реферер)
     counter.hit('http://example.com', 'Main page', 'http://google.com');
 }).listen(8080);  
+  ```
+  
+## Отправка хита
+  ```JavaScript
+        /**
+         * @param {string} pageUrl - адрес страницы
+         * @param {string} [pageTitle] - заголовок страницы
+         * @param {string} [pageRef] - реферер страницы
+         * @param {Object} [userParams] - параметры визитов
+         * @param {string} [ut] - для запрета индексирования 'noindex'
+         * @return {Object} this
+         * 
+         * @example
+         * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
+         *
+         * // С запретом на индексирования и параметрами визитов
+         * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: {level2: 1}}, 'noindex');
+         */          
+  ```
+  
+## Достижение цели
+  ```JavaScript
+        /**
+         * @param {string} target - название цели
+         * @param {Object} [userParams] - параметры визитов
+         * 
+         * @example
+         * counter.reachGoal('goalName');
+         *
+         * // С параметрами визитов
+         * counter.reachGoal('goalName', {level1: {level2: 1}});
+        */   
   ```

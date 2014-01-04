@@ -47,7 +47,7 @@
          * @param {string} [pageTitle] - заголовок страницы
          * @param {string} [pageRef] - реферер страницы
          * @param {Object} [userParams] - параметры визитов
-         * @param {string} [ut] - запрет индексирования - 'noindex'
+         * @param {string} [ut] - для запрета индексирования 'noindex'
          * @return {Object} this
          * 
          * @example
@@ -132,7 +132,7 @@
         /**
          * Параметры визитов
          *
-         * @param {Object} data - параметры визитов
+         * @param {...*} параметры визитов
          * @return {Object} this         
          * 
          * @example
