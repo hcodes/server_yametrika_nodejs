@@ -5,6 +5,7 @@
         "url": "https://github.com/hcodes"
     },
     "name": "yametrika",
+    "main": "yametrika.js",
     "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
     "version": "0.9.2",
     "homepage": "https://github.com/hcodes/server_yametrika_nodejs",
