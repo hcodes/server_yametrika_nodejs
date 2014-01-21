@@ -8,12 +8,12 @@
 (function () {
     'use strict';
     
-	var HOST = 'mc.yandex.ru';
-	var PATH = '/watch/';
-	var PORT = 80;
+    var HOST = 'mc.yandex.ru';
+    var PATH = '/watch/';
+    var PORT = 80;
     
-	var querystring = require('querystring');
-	var http = require('http');
+    var querystring = require('querystring');
+    var http = require('http');
     
     /**
      * Конструктор счётчика Метрики
@@ -21,14 +21,14 @@
      *
      * @param {Object} settings - настройки счётчика
      */ 
-	var Counter = function (settings) {
+    var Counter = function (settings) {
         // Номер счётчика
-		this._id = settings.id;
+        this._id = settings.id;
         
         // Тип счётчика: 0 - обычный счётчик, 1 - РСЯ-счётчик
-		this._type = settings.type || 0;
+        this._type = settings.type || 0;
         
-		this._encoding = settings.encoding || 'utf-8';
+        this._encoding = settings.encoding || 'utf-8';
         
         this._request = {
             host: null,
@@ -37,9 +37,9 @@
             'user-agent': null,
             ip: null
         };
-	};
+    };
 
-	Counter.prototype = {
+    Counter.prototype = {
         /**
          * Отправка хита
          * 
@@ -53,7 +53,7 @@
          * @example
          * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
          */        
-		hit:  function (pageUrl, pageTitle, pageRef, userParams, ut) {
+        hit:  function (pageUrl, pageTitle, pageRef, userParams, ut) {
             if (!pageUrl) {
                 pageUrl = this._request.url;
             }
@@ -65,7 +65,7 @@
             this._hitExt(pageUrl, pageTitle, pageRef, userParams, {ut: ut});
             
             return this;
-		},
+        },
         /**
          * Достижение цели
          *
@@ -75,17 +75,17 @@
          * @example
          * counter.reachGoal('goalName');
         */         
-		reachGoal: function (target, userParams) {
-			var referer;
-			if (target) {
-				target = 'goal://' + this._request.host + '/' + target;
-				referer = this._request.url;
-			} else {
-				target = this._request.url;
-				referer = this._request.referer;
-			}
-			
-			this._hitExt(target, null, referer, userParams, null);
+        reachGoal: function (target, userParams) {
+            var referer;
+            if (target) {
+                target = 'goal://' + this._request.host + '/' + target;
+                referer = this._request.url;
+            } else {
+                target = this._request.url;
+                referer = this._request.referer;
+            }
+            
+            this._hitExt(target, null, referer, userParams, null);
             
             return this;
         },
@@ -99,16 +99,16 @@
          * @example
          * counter.extLink('http://nodejs.org');
          */         
-		extLink: function (url, title) {
-			if (url) {
-				this._hitExt(url, title, this._request.url, null, {
-					ln: true,
-					ut: 'noindex'
-				});
-			}
+        extLink: function (url, title) {
+            if (url) {
+                this._hitExt(url, title, this._request.url, null, {
+                    ln: true,
+                    ut: 'noindex'
+                });
+            }
             
             return this;
-		},
+        },
          /**
          * Загрузка файла
          *
@@ -119,16 +119,16 @@
          * @example
          * counter.file('http://mysite.org/secret.zip');
          */        
-		file: function (file, title) {
-			if (file) {
-				this._hitExt(file, title, this._request.url, null, {
-					dl: true,
-					ln: true
-				});
-			}
+        file: function (file, title) {
+            if (file) {
+                this._hitExt(file, title, this._request.url, null, {
+                    dl: true,
+                    ln: true
+                });
+            }
             
             return this;
-		},
+        },
         /**
          * Параметры визитов
          *
@@ -140,7 +140,7 @@
          * или
          * counter.params('level1', 'level2', 'level3', 1);
          */         
-		params: function (data) {
+        params: function (data) {
             var obj = {};
             var pointer = obj;
             var len = arguments.length;
@@ -162,7 +162,7 @@
             }
             
             return this;
-		},
+        },
         /**
          * Не отказ
          *
@@ -171,11 +171,11 @@
          * @example
          * counter.notBounce();
          */         
-		notBounce: function () {
-			this._hitExt('', '', '', null, {nb: true});
+        notBounce: function () {
+            this._hitExt('', '', '', null, {nb: true});
             
             return this;
-		},
+        },
         /**
          * Заполнение необходимых параметров из запроса сервера для отправки данных в Метрику
          *
@@ -205,79 +205,79 @@
             var rh = req.headers;
             return rh['x-forwarded-proto'] || rh.protocol || (req.secure ? 'https' : 'http');
         },
-		_hitExt: function (pageUrl, pageTitle, pageRef, userParams, modes) {
-			var postData = {};
+        _hitExt: function (pageUrl, pageTitle, pageRef, userParams, modes) {
+            var postData = {};
 
-			if (this._type) {
-				postData['cnt-class'] = this._type;
-			}
-			
-			if (pageUrl) {
-				postData['page-url'] = pageUrl;
-			}
-			
-			if (pageRef) {
-				postData['page-ref'] = pageRef;
-			}         
-			
-			if (modes) {
-				modes.ar = true;
-			} else  {
-				modes = {ar: true};
-			}
-			
-			var browserInfo = [];
-			for(var key in modes) {
-				if (!modes.hasOwnProperty(key)) {
-					continue;
-				}
-				
-				if (key != 'ut') {
-					browserInfo.push(key + ':' + (modes[key] === true ? '1' : modes[key]));
-				}
-			}
-			
-			browserInfo.push('en:' + this._encoding);
-			browserInfo.push('rn:' + (Math.floor(Math.random() * 1E6)));
+            if (this._type) {
+                postData['cnt-class'] = this._type;
+            }
+            
+            if (pageUrl) {
+                postData['page-url'] = pageUrl;
+            }
+            
+            if (pageRef) {
+                postData['page-ref'] = pageRef;
+            }         
+            
+            if (modes) {
+                modes.ar = true;
+            } else  {
+                modes = {ar: true};
+            }
+            
+            var browserInfo = [];
+            for(var key in modes) {
+                if (!modes.hasOwnProperty(key)) {
+                    continue;
+                }
+                
+                if (key != 'ut') {
+                    browserInfo.push(key + ':' + (modes[key] === true ? '1' : modes[key]));
+                }
+            }
+            
+            browserInfo.push('en:' + this._encoding);
+            browserInfo.push('rn:' + (Math.floor(Math.random() * 1E6)));
 
-			if (pageTitle) {
-				browserInfo.push('t:' + pageTitle);
-			}
-			
-			postData['browser-info'] = browserInfo.join(':');
-			
-			if (userParams) {
-				postData['site-info'] = JSON.stringify(userParams);
-			}
+            if (pageTitle) {
+                browserInfo.push('t:' + pageTitle);
+            }
+            
+            postData['browser-info'] = browserInfo.join(':');
+            
+            if (userParams) {
+                postData['site-info'] = JSON.stringify(userParams);
+            }
 
-			if (modes['ut']) {
-				postData['ut'] = modes['ut'];
-			}
+            if (modes['ut']) {
+                postData['ut'] = modes['ut'];
+            }
             
             this._sendData(postData);
-		},
+        },
         _sendData: function (data) {
             var path = PATH + this._id
                 + '/1?rn=' + (Math.floor(Math.random() * 1E6))
                 + '&wmode=2'
                 + '&' + querystring.stringify(data);
 
-			var req = http.request({
-				host: HOST,
-				port: PORT,
-				path: path,
-				method: 'GET',
-				headers: {
-					'x-real-ip': this._request.ip,
-					'user-agent': this._request['user-agent']
-				}
-			}, function () {});
+            var req = http.request({
+                host: HOST,
+                port: PORT,
+                path: path,
+                method: 'GET',
+                headers: {
+                    'x-real-ip': this._request.ip,
+                    'user-agent': this._request['user-agent']
+                }
+            }, function () {});
             
             req.end();
         }
-	};
+    };
 
-	exports.counter = function (settings) {
+    exports.counter = function (settings) {
         return new Counter(settings);
     };
 })();
