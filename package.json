@@ -7,7 +7,7 @@
     "name": "yametrika",
     "main": "yametrika.js",
     "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
-    "version": "0.9.3",
+    "version": "1.0.0",
     "homepage": "https://github.com/hcodes/server_yametrika_nodejs",
     "repository": {
         "type": "git",
