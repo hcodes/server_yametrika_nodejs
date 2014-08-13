@@ -144,7 +144,8 @@ counter.notBounce();
   ```
   
 ## Полезные ссылки
-[Помощь Яндекс.Метрики](http://help.yandex.ru/metrika/)
++ [Версия для PHP](https://github.com/hcodes/server_yametrika/)
++ [Помощь Яндекс.Метрики](http://help.yandex.ru/metrika/)
 
 ## Лицензия
 MIT License
