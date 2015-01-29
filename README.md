@@ -85,11 +85,16 @@ counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: 
  * reachGoal: function (target, userParams) {}
 */   
 
+counter.hit();
 counter.reachGoal('goalName');
 
+// или
+
 // С параметрами визитов
+counter.hit();
 counter.reachGoal('goalName', {level1: {level2: 1}});
   ```
+Вызов метода `hit()` перед `reachGoal()` необходим для корректной привязки цели к визиту.
 
 ## Внешняя ссылка
   ```JavaScript
