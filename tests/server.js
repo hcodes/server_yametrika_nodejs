@@ -2,15 +2,15 @@
     https://metrika.yandex.ru/stat/?counter_id=21312094
 */
 
-var http = require('http');
-var counter = require('../yametrika').counter({id: 21312094});
+var http = require('http'),
+    counter = require('../yametrika').counter({id: 21312094});
 
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('okay');
-  
+
     counter.req(req);
-    
+
     counter.hit('http://example.com', 'Main page', 'http://google.com');
     counter.hit('http://example.com/back/', 'Back', 'http://example.com/back/');
     counter.reachGoal('action');
