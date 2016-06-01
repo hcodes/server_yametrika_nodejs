@@ -36,7 +36,7 @@
 + Вебвизор, аналитика форм
 + Карта кликов
 
-Уникальные посетители считаются по User Agent и IP-адресу.
+Уникальные посетители считаются по user agent'у и IP-адресу.
 
 ## Установка
 `npm install yametrika`
@@ -52,12 +52,12 @@ http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('okay');
 
-    // Заполняем нужные данные из запроса к серверу для отправки данных в Метрику
+    // Заполняем счётчик данными (referer, ip и ua) из запроса к серверу.
     counter.req(req);
 
     // Страница http://example.com, с заголовком 'Main page'
-    // переход был с http://google.com (реферер)
-    counter.hit('http://example.com', 'Main page', 'http://google.com');
+    // переход был с реферером http://othersite.com
+    counter.hit('http://example.com', 'Main page', 'http://othersite.com');
 }).listen(8080);
 ```
 
