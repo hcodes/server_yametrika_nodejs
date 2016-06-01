@@ -8,6 +8,7 @@
     "main": "yametrika.js",
     "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
     "version": "1.0.1",
+    "license": "MIT",
     "homepage": "https://github.com/hcodes/server_yametrika_nodejs",
     "repository": {
         "type": "git",
