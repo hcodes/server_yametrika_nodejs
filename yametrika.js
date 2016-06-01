@@ -19,7 +19,7 @@
      * Конструктор счётчика Метрики
      * @constructor
      *
-     * @param {Object} settings - настройки счётчика
+     * @param {Object} settings - Настройки счётчика.
      */
     var Counter = function(settings) {
         // Номер счётчика
@@ -41,14 +41,15 @@
 
     Counter.prototype = {
         /**
-         * Отправка хита
+         * Отправка хита.
          *
-         * @param {string} pageUrl - адрес страницы
-         * @param {string} [pageTitle] - заголовок страницы
-         * @param {string} [pageRef] - реферер страницы
-         * @param {Object} [userParams] - параметры визитов
-         * @param {string} [ut] - для запрета индексирования 'noindex'
-         * @return {Object} this
+         * @param {string} pageUrl - Адрес страницы.
+         * @param {string} [pageTitle] - Заголовок страницы.
+         * @param {string} [pageRef] - Реферер страницы.
+         * @param {Object} [userParams] - Параметры визитов.
+         * @param {string} [ut] - Для запрета индексирования 'noindex'.
+         *
+         * @returns {Object} this
          *
          * @example
          * counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
@@ -67,10 +68,12 @@
             return this;
         },
         /**
-         * Достижение цели
+         * Достижение цели.
          *
-         * @param {string} target - название цели
-         * @param {Object} [userParams] - параметры визитов
+         * @param {string} target - Название цели.
+         * @param {Object} [userParams] - Параметры визитов.
+         *
+         * @returns {Object} this
          *
          * @example
          * counter.reachGoal('goalName');
@@ -90,11 +93,12 @@
             return this;
         },
         /**
-         * Внешняя ссылка
+         * Внешняя ссылка.
          *
-         * @param {string} url - адрес страницы
-         * @param {string} [title] - заголовок страницы
-         * @return {Object} this
+         * @param {string} url - Адрес страницы.
+         * @param {string} [title] - Заголовок страницы.
+         *
+         * @returns {Object} this
          *
          * @example
          * counter.extLink('http://nodejs.org');
@@ -110,11 +114,12 @@
             return this;
         },
          /**
-         * Загрузка файла
+         * Загрузка файла.
          *
-         * @param {string} file - ссылка на файл
-         * @param {string} [title] - заголовок страницы
-         * @return {Object} this
+         * @param {string} file - Ссылка на файл.
+         * @param {string} [title] - Заголовок страницы.
+         *
+         * @returns {Object} this
          *
          * @example
          * counter.file('http://mysite.org/secret.zip');
@@ -130,10 +135,11 @@
             return this;
         },
         /**
-         * Параметры визитов
+         * Параметры визитов.
          *
-         * @param {...*} параметры визитов
-         * @return {Object} this
+         * @param {...*} data - Параметры визитов.
+         *
+         * @returns {Object} this
          *
          * @example
          * counter.params({level1: {level2: {level3: 1}}});
@@ -164,9 +170,9 @@
             return this;
         },
         /**
-         * Не отказ
+         * Не отказ.
          *
-         * @return {Object} this
+         * @returns {Object} this
          *
          * @example
          * counter.notBounce();
@@ -177,10 +183,11 @@
             return this;
         },
         /**
-         * Заполнение необходимых параметров из запроса сервера для отправки данных в Метрику
+         * Заполнение необходимых параметров из запроса сервера для отправки данных в Метрику.
          *
          * @param {Object} req
-         * @return {Object} this
+         *
+         * @returns {Object} this
          *
          * @example
          * counter.req(req);

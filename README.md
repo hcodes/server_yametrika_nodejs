@@ -25,7 +25,7 @@
 + Неотказ - notBounce()
 
 ## Настройки счётчика Метрики
-**В настройках счётчика во вкладке "Фильтры" / "Фильтрация роботов" необходимо выбрать опцию "Учитывать посещения всех роботов". В противном случае, статистика собираться не будет.**
+**В настройках счётчика во вкладке «Фильтры» / «Фильтрация роботов» необходимо выбрать опцию «Учитывать посещения всех роботов». В противном случае, статистика собираться не будет.**
 
 ## Ограничения
 Отчёты, которые будут недоступны в Метрике при серверной отправки:
@@ -45,7 +45,7 @@
 ```js
 var http = require('http');
 
-// Создаем счётчик, 12345 - номер счётчика
+// Создаем счётчик, 12345 — номер счётчика
 var counter = require('yametrika').counter({id: 12345});
 
 http.createServer(function (req, res) {
@@ -64,16 +64,14 @@ http.createServer(function (req, res) {
 ## Отправка хита
 ```js
 /**
- * @param {string} pageUrl - адрес страницы
- * @param {string} [pageTitle] - заголовок страницы
- * @param {string} [pageRef] - реферер страницы
- * @param {Object} [userParams] - параметры визитов
- * @param {string} [ut] - для запрета индексирования 'noindex'
- * @return {Object} this
+ * @param {string} pageUrl - Адрес страницы.
+ * @param {string} [pageTitle] - Заголовок страницы.
+ * @param {string} [pageRef] - Реферер страницы.
+ * @param {Object} [userParams] - Параметры визитов.
+ * @param {string} [ut] - Для запрета индексирования 'noindex'
  *
- * hit: function (pageUrl, pageTitle, pageRef, userParams, ut) {}
+ * @returns {Object} this
  */
-
 counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
 
 // С запретом на индексирование и параметрами визитов
@@ -83,12 +81,11 @@ counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: 
 ## Достижение цели
 ```js
 /**
- * @param {string} target - название цели
- * @param {Object} [userParams] - параметры визитов
+ * @param {string} target - Название цели.
+ * @param {Object} [userParams] - Параметры визитов.
  *
- * reachGoal: function (target, userParams) {}
-*/
-
+ * @returns {Object} this
+ */
 counter.hit();
 counter.reachGoal('goalName');
 
@@ -103,39 +100,32 @@ counter.reachGoal('goalName', {level1: {level2: 1}});
 ## Внешняя ссылка
 ```js
 /**
- * @param {string} url - адрес страницы
- * @param {string} [title] - заголовок страницы
- * @return {Object} this
+ * @param {string} url - Адрес страницы.
+ * @param {string} [title] - Заголовок страницы.
  *
- * extLink: function (url, title) {}
- * @example
+ * @returns {Object} this
  */
-
 counter.extLink('http://nodejs.org');
 ```
 
 ## Загрузка файла
 ```js
 /**
- * @param {string} file - ссылка на файл
- * @param {string} [title] - заголовок страницы
- * @return {Object} this
+ * @param {string} file - Ссылка на файл.
+ * @param {string} [title] - Заголовок страницы.
  *
- * file: function (file, title) {}
+ * @returns {Object} this
  */
-
 counter.file('http://mysite.org/secret.zip');
 ```
 
 ## Параметры визитов
 ```js
 /**
- * @param {...*} параметры визитов
- * @return {Object} this
+ * @param {...*} data - Параметры визитов.
  *
- * params: function (...) {}
+ * @returns {Object} this
  */
-
 counter.params({level1: {level2: {level3: 1}}});
 
 // или
@@ -145,10 +135,8 @@ counter.params('level1', 'level2', 'level3', 1);
 ## Не отказ
 ```js
 /**
- * @return {Object} this
- *
+ * @returns {Object} this
  */
-
 counter.notBounce();
 ```
 
