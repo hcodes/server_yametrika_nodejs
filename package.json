@@ -7,7 +7,7 @@
     "name": "yametrika",
     "main": "yametrika.js",
     "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "homepage": "https://github.com/hcodes/server_yametrika_nodejs",
     "repository": {
@@ -16,10 +16,13 @@
     },
     "keywords": [
         "yandex", "metrika", "analytics", "stats", "metrics", "track"
-    ],    
-    "devDependencies": {},
-    "optionalDependencies": {},
+    ],
     "engines": {
         "node": "*"
-    }
+    },
+    "files": [
+        "yametrika.js",
+        "LICENSE.md",
+        "README.md"
+    ]
 }
