@@ -42,7 +42,7 @@
 `npm install yametrika`
 
 ## Использование
-  ```JavaScript
+```js
 var http = require('http');
 
 // Создаем счётчик, 12345 - номер счётчика
@@ -51,18 +51,18 @@ var counter = require('yametrika').counter({id: 12345});
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('okay');
-  
+
     // Заполняем нужные данные из запроса к серверу для отправки данных в Метрику
     counter.req(req);
-    
+
     // Страница http://example.com, с заголовком 'Main page'
     // переход был с http://google.com (реферер)
     counter.hit('http://example.com', 'Main page', 'http://google.com');
-}).listen(8080);  
-  ```
-  
+}).listen(8080);
+```
+
 ## Отправка хита
-  ```JavaScript
+```js
 /**
  * @param {string} pageUrl - адрес страницы
  * @param {string} [pageTitle] - заголовок страницы
@@ -70,24 +70,24 @@ http.createServer(function (req, res) {
  * @param {Object} [userParams] - параметры визитов
  * @param {string} [ut] - для запрета индексирования 'noindex'
  * @return {Object} this
- * 
+ *
  * hit: function (pageUrl, pageTitle, pageRef, userParams, ut) {}
- */          
- 
+ */
+
 counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
 
 // С запретом на индексирование и параметрами визитов
 counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: {level2: 1}}, 'noindex');
-  ```
-  
+```
+
 ## Достижение цели
-  ```JavaScript
+```js
 /**
  * @param {string} target - название цели
  * @param {Object} [userParams] - параметры визитов
- * 
+ *
  * reachGoal: function (target, userParams) {}
-*/   
+*/
 
 counter.hit();
 counter.reachGoal('goalName');
@@ -97,64 +97,64 @@ counter.reachGoal('goalName');
 // С параметрами визитов
 counter.hit();
 counter.reachGoal('goalName', {level1: {level2: 1}});
-  ```
+```
 Вызов метода `hit()` перед `reachGoal()` необходим для корректной привязки цели к визиту.
 
 ## Внешняя ссылка
-  ```JavaScript
+```js
 /**
  * @param {string} url - адрес страницы
  * @param {string} [title] - заголовок страницы
  * @return {Object} this
- * 
+ *
  * extLink: function (url, title) {}
  * @example
- */         
- 
-counter.extLink('http://nodejs.org');  
-  ```
+ */
 
-## Загрузка файла  
-  ```JavaScript
+counter.extLink('http://nodejs.org');
+```
+
+## Загрузка файла
+```js
 /**
  * @param {string} file - ссылка на файл
  * @param {string} [title] - заголовок страницы
  * @return {Object} this
- * 
+ *
  * file: function (file, title) {}
- */        
- 
+ */
+
 counter.file('http://mysite.org/secret.zip');
-  ```
-  
+```
+
 ## Параметры визитов
-  ```JavaScript
+```js
 /**
  * @param {...*} параметры визитов
- * @return {Object} this         
- * 
+ * @return {Object} this
+ *
  * params: function (...) {}
- */         
- 
+ */
+
 counter.params({level1: {level2: {level3: 1}}});
 
 // или
 counter.params('level1', 'level2', 'level3', 1);
-  ```
-  
+```
+
 ## Не отказ
-  ```JavaScript
+```js
 /**
  * @return {Object} this
- * 
+ *
  */
- 
+
 counter.notBounce();
-  ```
-  
+```
+
 ## Полезные ссылки
 + [Версия для PHP](https://github.com/hcodes/server_yametrika/)
-+ [Помощь Яндекс.Метрики](http://help.yandex.ru/metrika/)
++ [Помощь Яндекс.Метрики](https://yandex.ru/support/metrika/)
 
 ## Лицензия
 MIT License
