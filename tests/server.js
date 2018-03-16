@@ -1,11 +1,11 @@
-/*
-    https://metrika.yandex.ru/stat/?counter_id=21312094
-*/
+// https://metrika.yandex.ru/stat/?counter_id=21312094
+'use strict';
 
-var http = require('http'),
+const
+    http = require('http'),
     counter = require('../yametrika').counter({id: 21312094});
 
-http.createServer(function (req, res) {
+http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('okay');
 
