@@ -55,9 +55,9 @@ http.createServer(function (req, res) {
     // Заполняем счётчик данными (referer, ip и ua) из запроса к серверу.
     counter.req(req);
 
-    // Страница http://example.com, с заголовком 'Main page'
-    // переход был с реферером http://othersite.com
-    counter.hit('http://example.com', 'Main page', 'http://othersite.com');
+    // Страница https://example.com, с заголовком 'Main page'
+    // переход был с реферером https://othersite.com
+    counter.hit('https://example.com', 'Main page', 'https://othersite.com');
 }).listen(8080);
 ```
 
@@ -72,10 +72,10 @@ http.createServer(function (req, res) {
  *
  * @returns {Object} this
  */
-counter.hit('http://mysite.org', 'Main page', 'http://google.com/...');
+counter.hit('https://mysite.org', 'Main page', 'https://google.com/...');
 
 // С запретом на индексирование и параметрами визитов
-counter.hit('http://mysite.org', 'Main page', 'http://google.com/...', {level1: {level2: 1}}, 'noindex');
+counter.hit('https://mysite.org', 'Main page', 'https://google.com/...', {level1: {level2: 1}}, 'noindex');
 ```
 
 ## Достижение цели
@@ -105,7 +105,7 @@ counter.reachGoal('goalName', {level1: {level2: 1}});
  *
  * @returns {Object} this
  */
-counter.extLink('http://nodejs.org');
+counter.extLink('https://nodejs.org');
 ```
 
 ## Загрузка файла
@@ -116,7 +116,7 @@ counter.extLink('http://nodejs.org');
  *
  * @returns {Object} this
  */
-counter.file('http://mysite.org/secret.zip');
+counter.file('https://mysite.org/secret.zip');
 ```
 
 ## Параметры визитов
