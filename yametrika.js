@@ -34,6 +34,10 @@ class Counter {
             'user-agent': null,
             ip: null
         };
+        this._onerror = function (err) {
+            if (err)
+                return true;
+        }
     }
 
     /**
@@ -269,6 +273,9 @@ class Counter {
     }
 
     _sendData(data) {
+        if (this._onerror()) {
+            return;
+        }
         const path = PATH + this._id
             + '/1?rn=' + (Math.floor(Math.random() * 1E6))
             + '&wmode=2'
