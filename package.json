@@ -2,7 +2,7 @@
     "name": "yametrika",
     "main": "yametrika.js",
     "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
-    "version": "2.0.1",
+    "version": "2.1.0",
     "author": {
         "name": "Denis Seleznev",
         "email": "hcodes@yandex.ru",
