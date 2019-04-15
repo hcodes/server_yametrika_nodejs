@@ -22,10 +22,12 @@ class Counter {
      * @param {Object} settings - Настройки счётчика.
      * @param {string|number} settings.id - Номер счётчика.
      * @param {number} [settings.type] - Тип счётчика: 0 - обычный счётчик, 1 - РСЯ-счётчик.
+     * @param {Function} [settings.onerror] - Для отладки сетевых ошибок.
      */
     constructor(settings) {
         this._id = settings.id;
         this._type = settings.type || 0;
+        this._onerror = settings.onerror;
 
         this._request = {
             host: null,
@@ -284,6 +286,10 @@ class Counter {
                 'user-agent': this._request['user-agent']
             }
         }, function() {});
+
+        if (this._onerror) {
+            req.on('error', this._onerror);
+        }
 
         req.end();
     }
