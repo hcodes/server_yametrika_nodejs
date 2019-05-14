@@ -23,11 +23,13 @@ class Counter {
      * @param {string|number} settings.id - Номер счётчика.
      * @param {number} [settings.type] - Тип счётчика: 0 - обычный счётчик, 1 - РСЯ-счётчик.
      * @param {Function} [settings.onerror] - Для отладки сетевых ошибок.
+     * @param {https.Agent} [settings.agent]
      */
     constructor(settings) {
         this._id = settings.id;
         this._type = settings.type || 0;
         this._onerror = settings.onerror;
+        this._agent = settings.agent;
 
         this._request = {
             host: null,
@@ -277,6 +279,7 @@ class Counter {
             + '&' + querystring.stringify(data);
 
         const req = https.request({
+            agent: this._agent,
             host: HOST,
             port: PORT,
             path: path,
