@@ -2,7 +2,7 @@
     "name": "yametrika",
     "main": "yametrika.js",
     "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "author": {
         "name": "Denis Seleznev",
         "email": "hcodes@yandex.ru",
@@ -35,6 +35,6 @@
         "test": "npm run eslint"
     },
     "devDependencies": {
-        "eslint": "^5.13.0"
+        "eslint": "^5.16.0"
     }
 }
