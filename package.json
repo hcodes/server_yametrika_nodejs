@@ -1,40 +1,46 @@
 {
-    "name": "yametrika",
-    "main": "yametrika.js",
-    "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
-    "version": "2.2.0",
-    "author": {
-        "name": "Denis Seleznev",
-        "email": "hcodes@yandex.ru",
-        "url": "https://github.com/hcodes"
-    },
-    "license": "MIT",
-    "homepage": "https://github.com/hcodes/server_yametrika_nodejs",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:hcodes/server_yametrika_nodejs.git"
-    },
-    "keywords": [
-        "yandex",
-        "metrika",
-        "analytics",
-        "stats",
-        "metrics",
-        "track"
-    ],
-    "engines": {
-        "node": ">= 6"
-    },
-    "files": [
-        "yametrika.js",
-        "LICENSE.md",
-        "README.md"
-    ],
-    "scripts": {
-        "eslint": "eslint .",
-        "test": "npm run eslint"
-    },
-    "devDependencies": {
-        "eslint": "^5.16.0"
-    }
+  "name": "yametrika",
+  "main": "yametrika.js",
+  "description": "Серверное отслеживание посетителей с помощью Яндекс.Метрики",
+  "version": "2.2.0",
+  "author": {
+    "name": "Denis Seleznev",
+    "email": "hcodes@yandex.ru",
+    "url": "https://github.com/hcodes"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/hcodes/server_yametrika_nodejs",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hcodes/server_yametrika_nodejs.git"
+  },
+  "keywords": [
+    "yandex",
+    "metrika",
+    "analytics",
+    "stats",
+    "metrics",
+    "track"
+  ],
+  "engines": {
+    "node": ">= 6"
+  },
+  "files": [
+    "yametrika.js",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "eslint": "eslint .",
+    "test": "npm run eslint",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  },
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.189.0"
+  }
 }
