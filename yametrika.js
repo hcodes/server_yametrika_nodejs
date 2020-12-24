@@ -285,7 +285,7 @@ class Counter {
             path: path,
             method: 'GET',
             headers: {
-                'x-real-ip': this._request.ip,
+                'x-forwarded-for': this._request.ip,
                 'user-agent': this._request['user-agent']
             }
         }, function() {});
