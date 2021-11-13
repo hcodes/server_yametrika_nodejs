@@ -1,7 +1,7 @@
 # Серверное отслеживание посетителей с помощью Яндекс.Метрики для Node.js
 [![NPM version](https://img.shields.io/npm/v/yametrika.svg)](https://www.npmjs.com/package/yametrika)
 [![NPM Downloads](https://img.shields.io/npm/dm/yametrika.svg?style=flat)](https://www.npmjs.org/package/yametrika)
-[![Dependency Status](https://img.shields.io/david/hcodes/server_yametrika_nodejs.svg?style=flat)](https://david-dm.org/hcodes/server_yametrika_nodejs)
+[![install size](https://packagephobia.com/badge?p=yametrika)](https://packagephobia.com/result?p=yametrika)
 
 
 В некоторых случаях требуется отслеживать действия на стороне сервера.
